@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Don\'t Panic</string>
+    <string name="countdownActivity"> Countdown</string>
+    <string-array name="navigation_drawer_items_array">
+        <item>day</item>
+        <item>month</item>
+        <item>hours</item>
+        <item>minutes</item>
+    </string-array>
+</resources>

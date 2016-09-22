@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/dateLayout"
+        android:gravity="center"
+        android:background="#ff0000"
+        android:layout_below="@+id/insertText"
+        android:visibility="visible">
+
+        <EditText
+            android:id="@+id/day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="day"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="19dp"
+            android:inputType="number"/>
+
+        <EditText
+            android:id="@+id/month"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="month"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="19dp"
+            android:inputType="number"
+            android:imeOptions="actionNext"
+            android:layout_toRightOf="@+id/day"/>
+
+        <EditText
+            android:id="@+id/hours"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="hour"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="19dp"
+            android:inputType="number"
+            android:imeOptions="actionNext"
+            android:layout_toRightOf="@+id/month" />
+
+        <EditText
+            android:id="@+id/minutes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="minutes"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="19dp"
+            android:inputType="number"
+            android:imeOptions="actionDone"
+            android:layout_toRightOf="@+id/hours" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/countdownButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start your doom"
+        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:onClick="goToCountdownActivity"
+        android:layout_below="@+id/dateLayout"/>
+
+</RelativeLayout>

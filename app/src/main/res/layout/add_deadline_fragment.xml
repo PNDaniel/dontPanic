@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="225dp"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#004400"
+    android:id="@+id/add_deadline_fragment">
+
+    <TextView
+        android:id="@+id/dontPanic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Don't Panic"
+        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:typeface="normal"
+        android:textSize="30sp"/>
+
+    <TextView
+        android:id="@+id/insertText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="but insert your DEADline"
+        android:paddingTop="15dp"
+        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:typeface="normal"
+        android:textSize="15sp"
+        android:layout_below="@+id/dontPanic" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/dateLayout"
+        android:gravity="center"
+        android:background="#ff0000"
+        android:layout_below="@+id/insertText"
+        android:visibility="visible">
+
+        <EditText
+            android:id="@+id/day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="day"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="17sp"
+            android:inputType="number"/>
+
+        <EditText
+            android:id="@+id/month"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="month"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="17sp"
+            android:inputType="number"
+            android:imeOptions="actionNext"
+            android:layout_toRightOf="@+id/day"/>
+
+        <EditText
+            android:id="@+id/year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="year"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="17sp"
+            android:inputType="number"
+            android:imeOptions="actionNext"
+            android:layout_toRightOf="@+id/month"/>
+
+        <EditText
+            android:id="@+id/hours"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="hour"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="17sp"
+            android:inputType="number"
+            android:imeOptions="actionNext"
+            android:layout_below="@+id/day" />
+
+        <EditText
+            android:id="@+id/minutes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="minutes"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="17sp"
+            android:inputType="number"
+            android:imeOptions="actionNext"
+            android:layout_below="@+id/month"
+            android:layout_toRightOf="@+id/hours" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/nameEvent"
+            android:hint="A deadline must have a name!"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="17sp"
+            android:imeOptions="actionDone"
+            android:layout_below="@+id/hours"/>
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/saveDeadlineButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start your doom"
+        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_below="@+id/dateLayout"/>
+
+</RelativeLayout>
+
+    <!--android:onClick="goToCountdownActivity" -->

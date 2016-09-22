@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/content_frame"
+        android:background="#000000">
+
+        <RelativeLayout
+            android:id="@+id/topBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#111111">
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/drawer_button"
+                android:src="@drawable/add_deadline_button"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+<!--    <ListView
+        android:layout_width="240sp"
+        android:layout_height="match_parent"
+        android:id="@+id/left_drawer"
+        android:layout_gravity="start"
+        android:background="#59b74b"
+        android:divider="@android:color/transparent"/>-->
+    <!-- http://www.colourtheory.net/articles/colour_psychology.htm -->
+
+</android.support.v4.widget.DrawerLayout>
