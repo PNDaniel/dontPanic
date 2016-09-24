@@ -5,11 +5,14 @@ import android.database.Cursor;
 import android.provider.BaseColumns;
 import android.util.Log;
 
+import java.sql.Time;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Daniel Nunes on 18-08-2016.
@@ -237,11 +240,34 @@ public class Event implements Comparable<Event>{
     }
 
     public String toStringRemainingTime(){
+        /* First Try
         Date date = new Date(remainingTime);
         SimpleDateFormat df = new SimpleDateFormat("HH:mm");
-        String dateString = df.format(date);
+        String dateString = df.format(date);*/
+
+        /* Second Try
+        Date date = new Date(remainingTime);
+        DateFormat formatter;
+        formatter = new SimpleDateFormat("HH:mm");
+        String dateFormatter = formatter.format(date);*/
+
+        String dateString;
+        if( TimeUnit.MILLISECONDS.toHours(remainingTime) < 48) {
+            dateString = String.format("%02d:%02d:%02d",
+                    TimeUnit.MILLISECONDS.toHours(remainingTime),
+                    TimeUnit.MILLISECONDS.toMinutes(remainingTime) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(remainingTime)),
+                    TimeUnit.MILLISECONDS.toSeconds(remainingTime) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(remainingTime)));
+        }
+        else {
+            dateString = String.format("%02dd:%02d:%02d:%02d",
+                    TimeUnit.MILLISECONDS.toDays(remainingTime),
+                    TimeUnit.MILLISECONDS.toHours(remainingTime) - TimeUnit.DAYS.toHours(TimeUnit.MILLISECONDS.toDays(remainingTime)),
+                    TimeUnit.MILLISECONDS.toMinutes(remainingTime) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(remainingTime)),
+                    TimeUnit.MILLISECONDS.toSeconds(remainingTime) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(remainingTime)));
+        }
 
         return dateString;
+
     }
 
     /*
