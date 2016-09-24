@@ -1,4 +1,4 @@
-package com.android.test.dontpanic.fragment;
+package com.android.test.dontpanic;
 
 import com.android.test.dontpanic.database.Event;
 

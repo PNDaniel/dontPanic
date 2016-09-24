@@ -1,11 +1,14 @@
 package com.android.test.dontpanic.fragment;
 
+import android.os.Handler;
+import android.os.SystemClock;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -22,6 +25,7 @@ import java.util.ArrayList;
 public class DeadlineListFragment extends Fragment {
 
     private MyDBHandler dbh;
+    private Handler timeHandler = new Handler();
     private ArrayList<Event> events = new ArrayList<>();
 
     public static DeadlineListFragment newInstance(){
@@ -46,6 +50,7 @@ public class DeadlineListFragment extends Fragment {
 
         rvEvents.setAdapter(adapter);
         rvEvents.setLayoutManager(new LinearLayoutManager(rootView.getContext()));
+
 
         return rootView;
     }

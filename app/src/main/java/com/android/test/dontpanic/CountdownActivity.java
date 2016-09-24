@@ -94,8 +94,8 @@ public class CountdownActivity extends Activity {
                 countdownValue.setText("Freeeeee!");
             }
         }.start();
-        setInitialImage();
-        setImageRotateListener();
+        //setInitialImage();
+        //setImageRotateListener();
     }
 
     private void setImageRotateListener() {

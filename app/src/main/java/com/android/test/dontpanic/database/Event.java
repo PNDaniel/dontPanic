@@ -239,6 +239,9 @@ public class Event implements Comparable<Event>{
         return dateString;
     }
 
+    /* website for next method
+    http://stackoverflow.com/questions/625433/how-to-convert-milliseconds-to-x-mins-x-seconds-in-java
+     */
     public String toStringRemainingTime(){
         /* First Try
         Date date = new Date(remainingTime);

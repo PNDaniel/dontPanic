@@ -127,8 +127,7 @@ public class MainActivity extends FragmentActivity {
 
     //TODO 3: create options button and respective activity
     //TODO 2: create deadline class with the ideas above mentioned (at the beginning of this file)
-    //TODO ^3: create deadline list fragment
-    //TODO ^3: create filter for deadlines
+    //TODO 3: create filter for deadlines
     //TODO 2: learn how to create notifications
     //TODO 5: create iOS compatibility
     //TODO 3: credits activity (fragment?)

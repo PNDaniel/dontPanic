@@ -12,8 +12,6 @@ import java.util.ArrayList;
  * Created by Daniel Nunes on 19-07-2016.
  */
 
-//TODO 1: understand what is SQLiteOpenHelper
-//TODO 1: finish this class, duh.
 public class MyDBHandler extends SQLiteOpenHelper {
 
     private static MyDBHandler dbHandler;
@@ -35,7 +33,6 @@ public class MyDBHandler extends SQLiteOpenHelper {
         db.execSQL(new SQLHelper().getSqlCreateEntries());
     }
 
-    //TODO 1: understand where to use oldVersion/newVersion
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
         db.execSQL(new SQLHelper().getSqlCreateEntries());
         onCreate(db);

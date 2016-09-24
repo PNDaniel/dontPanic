@@ -111,4 +111,7 @@ public class AddDeadlineFragment extends Fragment {
 
         //((Activity) getActivity()).overridePendingTransition(0,0);
     }
+
 }
+//TODO 1: Prevent input from a previous date from inserted
+//TODO 2: Scroll input for date and hour
