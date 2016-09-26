@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.android.test.dontpanic.database.Event;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.concurrent.RunnableFuture;
@@ -28,7 +29,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder>{
     private TextView eventName, eventTime, eventDate, eventTimeDiff;
     private Handler timeHandler = new Handler();
 
-    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, Serializable{
         public TextView eventName;
         public TextView eventTime;
         public TextView eventDate;
@@ -64,10 +65,16 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder>{
                 Bundle bundle = new Bundle();
                 Intent intent = new Intent(context, CountdownActivity.class);
 
-                bundle.putInt("day", event.getDay());
+                bundle.putInt("id", event.getId());
+                bundle.putString("name", event.getName());
+                bundle.putLong("date", event.getDeadlineDate());
+
+                /*bundle.putInt("day", event.getDay());
                 bundle.putInt("month", event.getMonth());
+                bundle.putInt("year", event.getYear());
                 bundle.putInt("hours",  event.getHour());
-                bundle.putInt("minutes",  event.getMinute());
+                bundle.putInt("minutes",  event.getMinute());*/
+
                 intent.putExtras(bundle);
                 context.startActivity(intent);
             }

@@ -1,7 +1,5 @@
 package com.android.test.dontpanic.database;
 
-import android.database.sqlite.SQLiteDatabase;
-
 /**
  * Created by Daniel Nunes on 18-08-2016.
  */
@@ -23,11 +21,16 @@ public class SQLHelper {
 
     private static final String SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS " + Event.EventEntry.TABLE_NAME;
 
-    public String getSqlCreateEntries(){
+    public static String getSqlCreateEntries(){
         return SQL_CREATE_ENTRIES;
     }
-    public String getSqlDeleteEntries(){
+    public static String getSqlDeleteEntries(){
         return SQL_DELETE_ENTRIES;
+    }
+
+    public static String updateEntry(String tableName ,String idFieldName, int id){
+
+        return "SELECT * FROM " + tableName + " WHERE " + idFieldName + " = " + id;
     }
 
     public static String selectAllEvents(String tableName){

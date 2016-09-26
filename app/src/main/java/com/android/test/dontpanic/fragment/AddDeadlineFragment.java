@@ -74,7 +74,7 @@ public class AddDeadlineFragment extends Fragment {
 
     private void moveToNewActivity() {
         Intent i = new Intent(getActivity(), MainActivity.class);
-        long lastID;
+        int lastID;
 
         /*Log.d("Name",nameText.getText().toString());
         Log.d("Day",dayText.getText().toString());
@@ -88,7 +88,7 @@ public class AddDeadlineFragment extends Fragment {
         if (cursor.moveToLast())
         {
             Log.d("LastID if", cursor.getString(cursor.getColumnIndexOrThrow(Event.EventEntry.COLUMN_ID)));
-            lastID = cursor.getLong(cursor.getColumnIndexOrThrow(Event.EventEntry.COLUMN_ID));
+            lastID = (int) cursor.getLong(cursor.getColumnIndexOrThrow(Event.EventEntry.COLUMN_ID));
             lastID++;
         }
         else

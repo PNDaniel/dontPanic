@@ -1,6 +1,7 @@
 package com.android.test.dontpanic;
 
 import android.app.Activity;
+import android.app.usage.UsageEvents;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -9,6 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.android.test.dontpanic.database.Event;
+import com.android.test.dontpanic.database.MyDBHandler;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -25,6 +29,11 @@ public class CountdownActivity extends Activity {
 
     private ArrayList<Integer> images = new ArrayList<>();
     private int currentImage = 0;
+
+    private int id;
+    private long deadlineDate;
+    private String name;
+    private MyDBHandler dbh;
 
     private int day = 0;
     private int month = 0;
@@ -46,11 +55,16 @@ public class CountdownActivity extends Activity {
         countdownValue = (TextView) findViewById(R.id.countdownValue);
 
         if (!extrasBundle.isEmpty()) {
-            day = extrasBundle.getInt("day");
+            id = extrasBundle.getInt("id");
+            deadlineDate = extrasBundle.getLong("date");
+            name = extrasBundle.getString("name");
+
+            /*day = extrasBundle.getInt("day");
             month = extrasBundle.getInt("month");
             hours = extrasBundle.getInt("hours");
-            minutes = extrasBundle.getInt("minutes");
-            images = extrasBundle.getIntegerArrayList("images");
+            minutes = extrasBundle.getInt("minutes");*/
+
+            //images = extrasBundle.getIntegerArrayList("images");
 
             /* Testing
             day = 21;
@@ -58,13 +72,13 @@ public class CountdownActivity extends Activity {
             hours = 23;
             minutes = 59;*/
 
-            Calendar cal = Calendar.getInstance();
+            /*Calendar cal = Calendar.getInstance();
             cal.set(Calendar.DATE, day);
             cal.set(Calendar.MONTH, month - 1);
             cal.set(Calendar.HOUR_OF_DAY, hours);
             cal.set(Calendar.MINUTE, minutes);
             cal.set(Calendar.SECOND, 0);
-            Date date = cal.getTime();
+            Date date = cal.getTime();*/
 
             //DateFormat dateFormat = new SimpleDateFormat("dd/MM HH:mm:ss");
             //String strDate = dateFormat.format(date);
@@ -80,7 +94,8 @@ public class CountdownActivity extends Activity {
             Log.d("Date Current", dateFormat.format(date1)); // 20/07 10:50:26
             */
 
-            countdownNumber = date.getTime() - System.currentTimeMillis();
+            //countdownNumber = date.getTime() - System.currentTimeMillis();
+            countdownNumber = deadlineDate - System.currentTimeMillis();
         }
 
         new CountDownTimer(countdownNumber, 1000) { // adjust the milli seconds here
@@ -96,6 +111,15 @@ public class CountdownActivity extends Activity {
         }.start();
         //setInitialImage();
         //setImageRotateListener();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        dbh = MyDBHandler.getInstance(this);
+        Event event = dbh.getEvent(id);
+
     }
 
     private void setImageRotateListener() {

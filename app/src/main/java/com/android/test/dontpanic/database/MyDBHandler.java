@@ -58,11 +58,38 @@ public class MyDBHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = db.rawQuery(SQLHelper.selectAllEvents(Event.EventEntry.TABLE_NAME), null);
 
-        ArrayList<Event> tasks = Event.getTasksFromCursor(c);
+        ArrayList<Event> events = Event.getEventsFromCursor(c);
 
         c.close();
         db.close();
 
-        return tasks;
+        return events;
     }
+
+    public Event getEvent(int id){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(SQLHelper.updateEntry(Event.EventEntry.TABLE_NAME, Event.EventEntry.COLUMN_ID ,id), null);
+
+        ArrayList<Event> events = Event.getEventsFromCursor(c);
+
+        c.close();
+        db.close();
+        if (events != null && events.size() > 0){
+            return events.get(0);
+        }
+
+        return null;
+    }
+
+    public void updateTime(int eventID, long time){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+    }
+
+    /*public void setTimeSpent(int taskID, long timeSpent) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(Task.COLUMN_TIMESPENT, timeSpent);
+        db.update(Task.TABLE_NAME, cv, Task.COLUMN_ID + "=" + taskID, null);
+    }*/
 }

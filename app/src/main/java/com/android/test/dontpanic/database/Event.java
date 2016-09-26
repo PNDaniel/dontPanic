@@ -44,7 +44,7 @@ public class Event implements Comparable<Event>{
     }
 
     /**  Event fields **/
-    private long id;
+    private int id;
     private String name;
     private int day;
     private int month;
@@ -80,7 +80,7 @@ public class Event implements Comparable<Event>{
         isFinished = finished;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -150,7 +150,7 @@ public class Event implements Comparable<Event>{
         return contentValues;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
@@ -190,7 +190,7 @@ public class Event implements Comparable<Event>{
         return deadlineDate;
     }
 
-    public static ArrayList<Event> getTasksFromCursor(Cursor c){
+    public static ArrayList<Event> getEventsFromCursor(Cursor c){
         ArrayList<Event> result = new ArrayList<Event>();
 
         if(c.moveToFirst()){
