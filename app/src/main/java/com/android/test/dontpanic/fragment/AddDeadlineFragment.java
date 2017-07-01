@@ -113,5 +113,3 @@ public class AddDeadlineFragment extends Fragment {
     }
 
 }
-//TODO 1: Prevent input from a previous date from inserted
-//TODO 2: Scroll input for date and hour

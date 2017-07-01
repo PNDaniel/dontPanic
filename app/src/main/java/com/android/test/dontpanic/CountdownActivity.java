@@ -151,9 +151,4 @@ public class CountdownActivity extends Activity {
         final ImageView imageView = (ImageView) findViewById(R.id.imageDisplay);
         imageView.setImageResource(images.get(currentImage));
     }
-
-    //TODO 3: Verify if the countdown is working properly with DST
-    //TODO 2: learn how to make a fragment for Click to make it better
-    //TODO ^2: search ideas for Click to make it better
-    //TODO 3: create "deadline reached" screen (maybe create a fragment for it)
 }

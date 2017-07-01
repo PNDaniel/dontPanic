@@ -1,6 +1,5 @@
 package com.android.test.dontpanic;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
@@ -15,21 +14,13 @@ import com.android.test.dontpanic.fragment.DeadlineListFragment;
 
 import java.util.ArrayList;
 
-
 /*
-* Create a database with the information about each deadline
-* Each deadline will have it's date, and importance 1-5 (pre-defined is 1 or 3), number can change
-* So a person can order by timeline or importance.
-* Warnings at top about the number of deadlines that will end before the most important deadlie reaches it's mark
-* Warning Example: "You have 4 deadlines before the conclusion of the most important deadline" (use some sort of floating test)
-*
 * Each deadline will have a time difference between the above one
 * example:
 * Teste SDIS 78h48m
 * 29/06 16h       0
 * Entrega de COMP 30/06 14h30
 * 91h18 +22h30m
-*
 * */
 
 public class MainActivity extends FragmentActivity {
@@ -124,11 +115,4 @@ public class MainActivity extends FragmentActivity {
         intent.putExtras(bundle);
         startActivity(intent);
     }*/
-
-    //TODO 3: create options button and respective activity
-    //TODO 2: create deadline class with the ideas above mentioned (at the beginning of this file)
-    //TODO 3: create filter for deadlines
-    //TODO 2: learn how to create notifications
-    //TODO 5: create iOS compatibility
-    //TODO 3: credits activity (fragment?)
 }

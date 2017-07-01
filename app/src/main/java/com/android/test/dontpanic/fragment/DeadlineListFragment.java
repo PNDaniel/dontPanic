@@ -1,5 +1,6 @@
 package com.android.test.dontpanic.fragment;
 
+import android.app.Activity;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.support.v4.app.Fragment;
@@ -8,7 +9,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -17,7 +17,10 @@ import com.android.test.dontpanic.R;
 import com.android.test.dontpanic.database.Event;
 import com.android.test.dontpanic.database.MyDBHandler;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Objects;
+import java.util.Timer;
 
 /**
  * Created by Daniel Nunes on 12-09-2016.
@@ -27,6 +30,7 @@ public class DeadlineListFragment extends Fragment {
     private MyDBHandler dbh;
     private Handler timeHandler = new Handler();
     private ArrayList<Event> events = new ArrayList<>();
+    private EventAdapter adapter;
 
     public static DeadlineListFragment newInstance(){
         return new DeadlineListFragment();
@@ -46,13 +50,37 @@ public class DeadlineListFragment extends Fragment {
         }
 
         RecyclerView rvEvents = (RecyclerView) rootView.findViewById(R.id.deadlineListRecycler);
-        EventAdapter adapter = new EventAdapter(rootView.getContext(), events);
+        adapter = new EventAdapter(rootView.getContext(), events);
 
         rvEvents.setAdapter(adapter);
+
+        // incluir o adapter.notifyDataSetChanged()
+        Thread t = new Thread(){
+        @Override
+        public void run(){
+            try{
+                while (!isInterrupted()){
+                    Thread.sleep(1000);
+                    ((Activity)getContext()).runOnUiThread(new Runnable(){
+                        @Override
+                                public void run(){
+                                 updateTextView(events.size());
+                        }
+                    });
+                }
+            }
+            catch (InterruptedException e){ }
+            }
+        };
+        t.start();
+
         rvEvents.setLayoutManager(new LinearLayoutManager(rootView.getContext()));
 
-
         return rootView;
+    }
+
+    private void updateTextView(int eventsSize){
+            adapter.notifyItemRangeChanged(0, eventsSize);
     }
 
     @Override
